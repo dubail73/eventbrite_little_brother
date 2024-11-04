@@ -82,6 +82,22 @@ Rails.application.configure do
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
   # config.action_mailer.raise_delivery_errors = false
 
+  # Configure Action Mailer pour envoyer les e-mails avec SendGrid en production
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  user_name: ENV['SENDGRID_USERNAME'],
+  password: ENV['SENDGRID_PASSWORD'],
+  domain: 'herokuapp.com', # Remplace par ton domaine personnalisé si tu en as un
+  address: 'smtp.sendgrid.net',
+  port: 587,
+  authentication: :plain,
+  enable_starttls_auto: true
+}
+
+# Définis le domaine d'expéditeur par défaut
+config.action_mailer.default_url_options = { host: 'ton-app.heroku.com' } # Remplace 'ton-app.heroku.com' par l'URL de ton app
+
+
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
   config.i18n.fallbacks = true
