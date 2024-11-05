@@ -19,7 +19,8 @@ users = [
   { first_name: "Bob", last_name: "Jones", email: "bob@yopmail.com" },
   { first_name: "Charlie", last_name: "Brown", email: "charlie@yopmail.com" },
   { first_name: "David", last_name: "Wilson", email: "david@yopmail.com" },
-  { first_name: "Eve", last_name: "Johnson", email: "eve@yopmail.com" }
+  { first_name: "Eve", last_name: "Johnson", email: "eve@yopmail.com" },
+  { first_name: "John", last_name: "Doe", email: "john@example.com" }
 ]
 
 # Enregistrement des utilisateurs dans la base de données

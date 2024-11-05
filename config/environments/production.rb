@@ -87,17 +87,15 @@ config.action_mailer.delivery_method = :file
 config.action_mailer.file_settings = { location: Rails.root.join('tmp/mails') }
 
 
-  # Configure Action Mailer pour envoyer les e-mails avec SendGrid en production
-#config.action_mailer.delivery_method = :smtp
-#config.action_mailer.smtp_settings = {
-  #user_name: ENV['SENDGRID_USERNAME'],
-  #password: ENV['SENDGRID_PASSWORD'],
-  #domain: 'herokuapp.com', # Remplace par ton domaine personnalisé si tu en as un
-  #address: 'smtp.sendgrid.net',
-  #port: 587,
-  #authentication: :plain,
-  #enable_starttls_auto: true
-#}
+ActionMailer::Base.smtp_settings = {
+  :user_name => ENV['MAILJET_LOGIN'],
+  :password => ENV['MAILJET_PWD'],
+  :domain => 'monsite.fr',
+  :address => 'in-v3.mailjet.com',
+  :port => 587,
+  :authentication => :plain,
+  :enable_starttls_auto => true
+}
 
 # Définis le domaine d'expéditeur par défaut
 config.action_mailer.default_url_options = { host: 'ton-app.heroku.com' } # Remplace 'ton-app.heroku.com' par l'URL de ton app
