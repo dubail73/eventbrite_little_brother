@@ -1,4 +1,12 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+  :recoverable, :rememberable, :validatable
 
     # L'utilisateur administre plusieurs événements
     has_many :administered_events, class_name: 'Event', foreign_key: 'admin_id'

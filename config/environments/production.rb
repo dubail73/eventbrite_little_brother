@@ -87,15 +87,16 @@ config.action_mailer.delivery_method = :file
 config.action_mailer.file_settings = { location: Rails.root.join('tmp/mails') }
 
 
-ActionMailer::Base.smtp_settings = {
-  :user_name => ENV['MAILJET_LOGIN'],
-  :password => ENV['MAILJET_PWD'],
-  :domain => 'monsite.fr',
-  :address => 'in-v3.mailjet.com',
-  :port => 587,
-  :authentication => :plain,
-  :enable_starttls_auto => true
+config.action_mailer.delivery_method = :smtp
+config.action_mailer.smtp_settings = {
+  address:              'in-v3.mailjet.com',
+  port:                 587,
+  user_name:           ENV['MAILJET_API_KEY'],   # Utilise la clé API correcte
+  password:            ENV['MAILJET_API_SECRET'], # Utilise le secret correct
+  authentication:       'plain',
+  enable_starttls_auto: true
 }
+
 
 # Définis le domaine d'expéditeur par défaut
 config.action_mailer.default_url_options = { host: 'ton-app.heroku.com' } # Remplace 'ton-app.heroku.com' par l'URL de ton app
